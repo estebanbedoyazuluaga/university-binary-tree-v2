@@ -38,8 +38,14 @@ namespace BinaryTreeUniversity{
             Console.WriteLine("Total Salaries: $" + universityTree.AddSalaries(universityTree.Root));
 
             Console.WriteLine();
+            
             Console.WriteLine( $"Greatest salary besides the principal's: ${universityTree.GetGreatestSalaryNoRoot()}" );
             Console.WriteLine($"Average Salary: {universityTree.GetAverage(universityTree.Root)}");
+            Console.WriteLine("Salaries corresponding to \"Jefe de Registros\": " + 
+                                universityTree.AddSalaries(
+                                    universityTree.GetPositionNode(universityTree.Root, "Jefe de Registros")
+                                )
+            );
             Console.WriteLine($"Total in taxes: ${universityTree.GetTotalInTaxes(universityTree.Root)}");
 
         }
