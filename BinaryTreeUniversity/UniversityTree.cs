@@ -45,6 +45,10 @@ namespace BinaryTreeUniversity{
             return from.Position.Salary + AddSalaries(from.left) + AddSalaries(from.right);
         }
 
+        public float GetAverage(PositionNode from){
+            return AddSalaries(from) / CountNodes(from);
+        }
+
         public int CountNodes(PositionNode from){
             if(from == null){
                 return 0;
@@ -52,11 +56,11 @@ namespace BinaryTreeUniversity{
             return 1 + CountNodes(from.left) + CountNodes(from.right);
         }
 
-        public float AddTaxes(PositionNode from){
+        public float GetTotalInTaxes(PositionNode from){
             if(from == null){
                 return 0;
             }
-            return (from.Position.Salary * from.Position.tax) + AddSalaries(from.left) + AddSalaries(from.right);
+            return (from.Position.Salary * from.Position.Tax) + AddSalaries(from.left) + AddSalaries(from.right);
         }
 
         //returns the greatest between 2 floats
@@ -83,23 +87,23 @@ namespace BinaryTreeUniversity{
             if (from.left == null){
                 return from.Position.Salary;
             } else {
-                if (GetGreatestSalary(from.left, greatest) > greatest){
-                    greatest = from.Position.Salary;
-                }
+                greatest = GreatestBetweenTwo(from.left.Position.Salary, greatest);
             }
 
             if (from.right == null){
                 return from.Position.Salary;
             } else {
-                if (GetGreatestSalary(from.right, greatest) > greatest){
-                    greatest = from.Position.Salary;
-                }
-            }
-            if (from.Position.Salary > greatest){
-                greatest = from.Position.Salary;
+                greatest = GreatestBetweenTwo(from.right.Position.Salary, greatest);
             }
 
-            return greatest;
+            return GreatestBetweenTwo(from.Position.Salary, greatest);
         }
+
+        // public PositionNode GetPositionNode(PossitionNode from, string name){
+        //     if (from == null){
+        //         return null;
+        //     }
+        //     return null;
+        // }
     }
 }
